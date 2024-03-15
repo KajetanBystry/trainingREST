@@ -1,0 +1,12 @@
+<% presenter = PostPresenter.new(@post) %>
+Title: <%= presenter.parsed_title %>
+Body: <%= presenter.body %>
+<% if presenter.image.persisted? %>
+  Image: <%= image_tag presenter.image, width: '100px' %>
+<% end %>
+
+Comments:
+<% @comments.each do |comment| %>
+  <% comment_presenter = CommentPresenter.new(comment) %>
+  <%= comment_presenter.parsed_content %>
+<% end %>
